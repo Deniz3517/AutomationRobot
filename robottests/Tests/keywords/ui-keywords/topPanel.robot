@@ -5,7 +5,6 @@ Library    Browser
 Library    String
 
 *** Variables ***
-
 ${automation_exercise_home_page_button}      //*[@id="header"]
 ${automation_exercise_products_button}      //a[@href='/products' and contains(text(), 'Products')]
 ${automation_exercise_carts_button}        //a[@href='/carts' and contains(text(), 'Carts')]
@@ -48,3 +47,4 @@ ${automation_exercise_logout_button}     //a[@href='/logout' and contains(text()
 [Automation Exercise - Top Panel] Click Logout Button
     Sleep    0.1s
     Click With Options  ${automation_exercise_logout_button}   force=true
+

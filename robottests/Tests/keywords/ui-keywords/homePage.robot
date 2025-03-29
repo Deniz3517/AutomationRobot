@@ -6,7 +6,7 @@ Library    Browser
 *** Variables ***
 
 *** Keywords ***
-[Automation Exercise – Home Page] Open Education Home Page
+[Automation Exercise – Home Page] Open Automation Exercise Home Page
     [Arguments]    ${URL}
     New Browser    ${BROWSER_TYPE}    headless=true    downloadsPath=.    args=["--disable-web-security"]
     Set Log Level    WARN
