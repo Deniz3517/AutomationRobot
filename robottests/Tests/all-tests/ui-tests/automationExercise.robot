@@ -12,17 +12,17 @@ Resource    robottests/Tests/keywords/ui-keywords/LoginPage.robot
 *** Keywords ***
 
 Setup Action
-	Set Log Level    WARN
-	[Temp Email – Home Page] METHOD: Open Home Page
+    Set Log Level    WARN
+    [Temp Email – Home Page] METHOD: Open Home Page
     [Temp Email – Home Page] METHOD: Open Home Page
     [Temp Email - Home Page] METHOD: Set TEMP_EMAIL And TEMP_PASS Values
     ${temp_email_len}    Get Length    ${TEMP_EMAIL}
     IF    ${temp_email_len} < ${1}
-        [Temp Email – Home Page] METHOD: Open Home Page
-        [Temp Email - Home Page] METHOD: Set TEMP_EMAIL And TEMP_PASS Values
-        ${temp_email_len}    Get Length    ${TEMP_EMAIL}
-        Run Keyword If    ${temp_email_len} < ${1}    Fail    msg=Something wrong with temporary email after two attempts!
-        END
+    [Temp Email – Home Page] METHOD: Open Home Page
+    [Temp Email - Home Page] METHOD: Set TEMP_EMAIL And TEMP_PASS Values
+    ${temp_email_len}    Get Length    ${TEMP_EMAIL}
+    Run Keyword If    ${temp_email_len} < ${1}    Fail    msg=Something wrong with temporary email after two attempts!
+    END
 
 
 *** Test Cases ***
