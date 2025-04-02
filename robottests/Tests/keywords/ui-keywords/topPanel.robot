@@ -47,4 +47,3 @@ ${automation_exercise_logout_button}     //a[@href='/logout' and contains(text()
 [Automation Exercise - Top Panel] Click Logout Button
     Sleep    0.1s
     Click With Options  ${automation_exercise_logout_button}   force=true
-

@@ -3,11 +3,13 @@
 Library      Browser
 Library      Collections
 
-Resource    robottests/Tests/keywords/ui-keywords/topPanel.robot
-Resource    robottests/Tests/keywords/ui-keywords/homePage.robot
-Resource    robottests/Tests/keywords/ui-keywords/globalVariables.robot
-Resource    robottests/Tests/keywords/temp-email/homePage.robot
-Resource    robottests/Tests/keywords/ui-keywords/LoginPage.robot
+Resource    ../../keywords/ui-keywords/topPanel.robot
+Resource    ../../keywords/ui-keywords/homePage.robot
+Resource    ../../keywords/ui-keywords/globalVariables.robot
+Resource    ../../keywords/temp-email/homePage.robot
+Resource    ../../keywords/ui-keywords/LoginPage.robot
+*** Variables ***
+${BROWSER_TYPE}   chromium
 
 *** Keywords ***
 
