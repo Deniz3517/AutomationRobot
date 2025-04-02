@@ -3,11 +3,13 @@
 Library      Browser
 Library      Collections
 
-Resource    robottests/Tests/keywords/ui-keywords/topPanel.robot
-Resource    robottests/Tests/keywords/ui-keywords/homePage.robot
-Resource    robottests/Tests/keywords/ui-keywords/globalVariables.robot
-Resource    robottests/Tests/keywords/temp-email/homePage.robot
-Resource    robottests/Tests/keywords/ui-keywords/LoginPage.robot
+Resource    ../../keywords/ui-keywords/topPanel.robot
+Resource    ../../keywords/ui-keywords/homePage.robot
+Resource    ../../keywords/ui-keywords/globalVariables.robot
+Resource    ../../keywords/temp-email/homePage.robot
+Resource    ../../keywords/ui-keywords/LoginPage.robot
+*** Variables ***
+${BROWSER_TYPE}   chromium
 
 *** Keywords ***
 
@@ -29,7 +31,7 @@ Setup Action
 [Automation Robot] Automation Exercise - Login Test
     [Tags]    UI    SMOKE    REGRESSION   TEST-1
     Setup Action
-    [Automation Exercise – Home Page] Open Education Home Page      ${AUTOMATIONEXERCISE_LINK}
+    [Automation Exercise – Home Page] Open Automation Exercise Home Page      ${AUTOMATIONEXERCISE_LINK}
     [Automation Exercise – Home Page] Is Page Opened
     [Automation Exercise - Top Panel] Is Login Button Button Visible
     [Automation Exercise - Top Panel] Click Login Button
