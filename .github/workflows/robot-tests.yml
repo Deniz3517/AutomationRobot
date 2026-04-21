@@ -1,0 +1,89 @@
+name: Robot Framework Tests
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+  workflow_dispatch:
+    inputs:
+      test_suite:
+        description: 'Hangi testler çalışsın?'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - ui
+          - api
+
+jobs:
+  api-tests:
+    name: API Tests
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.test_suite == 'all' || github.event.inputs.test_suite == 'api' || github.event_name != 'workflow_dispatch' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run API Tests
+        run: |
+          python3 -m robot \
+            --outputdir results/api \
+            --xunit xunit.xml \
+            --include API \
+            robottests/Tests/all-tests/api-tests/api-test.robot
+
+      - name: Upload API Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-test-results
+          path: results/api/
+
+  ui-tests:
+    name: UI Tests
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.test_suite == 'all' || github.event.inputs.test_suite == 'ui' || github.event_name != 'workflow_dispatch' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Initialize Browser Library
+        run: python3 -m Browser.entry init
+
+      - name: Run UI Tests
+        run: |
+          python3 -m robot \
+            --outputdir results/ui \
+            --xunit xunit.xml \
+            --include UI \
+            --variable BROWSER_TYPE:chromium \
+            robottests/Tests/all-tests/ui-tests/automationExercise.robot
+
+      - name: Upload UI Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ui-test-results
+          path: results/ui/
