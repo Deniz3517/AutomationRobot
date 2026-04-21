@@ -7,7 +7,7 @@ Library    String
 *** Variables ***
 ${automation_exercise_home_page_button}      //*[@id="header"]
 ${automation_exercise_products_button}      //a[@href='/products' and contains(text(), 'Products')]
-${automation_exercise_carts_button}        //a[@href='/carts' and contains(text(), 'Carts')]
+${automation_exercise_carts_button}        (//a[@href='/view_cart'])[1]
 ${automation_exercise_login_button}       //a[@href='/login' and contains(text(), 'Login')]
 ${automation_exercise_logout_button}     //a[@href='/logout' and contains(text(), 'Logout')]
 

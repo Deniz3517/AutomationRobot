@@ -5,7 +5,7 @@ Library    Browser
 Library    String
 Library    Collections
 
-Resource    robottests/Tests/keywords/globalVariables.robot
+Resource    ../ui-keywords/globalVariables.robot
 
 *** Variables ***
 ${xpath_refresh_button}           //a[contains(@class,'refresh') and not (contains(@class, 'btn'))]
