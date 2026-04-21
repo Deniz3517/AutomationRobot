@@ -5,15 +5,14 @@ Library    Browser
 
 *** Variables ***
 
-${automation_excercise_login_page_id_email_input}         //input[@name='email']
-${automation_excercise_login_page_id_password_input}      //input[@name='password']
-${automation_excercise_page_xpath_sign_in_button}
+${automation_excercise_login_page_id_email_input}         //input[@data-qa='login-email']
+${automation_excercise_login_page_id_password_input}      //input[@data-qa='login-password']
+${automation_excercise_page_xpath_sign_in_button}         //button[@data-qa='login-button']
 
 *** Keywords ***
 
 [Automation Exercise – Login Page] Is Page Opened
-    Sleep    0.3s
-    Get Url    should end with    /login
+    Wait Until Keyword Succeeds    10s    0.5s    Get Url    should end with    /login
 
 
 [Automation Exercise – Login Page] Log In To Automation Exercise
@@ -24,5 +23,4 @@ ${automation_excercise_page_xpath_sign_in_button}
     Click       ${automation_excercise_page_xpath_sign_in_button}
 
 [Automation Exercise – Login Page] Click Sign Up Button
-	Click       ${automation_excercise_page_xpath_sign_in_button}
-
+    Click       ${automation_excercise_page_xpath_sign_in_button}
